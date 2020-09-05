@@ -1,0 +1,23 @@
+version: "3.0"
+services:
+  web:
+    image: bishoyadly/spring-app:latest
+    ports:
+      - "8080:8080"
+      - "5005:5005"
+    environment:
+      DB_URL: jdbc:postgresql://db:5432/docker-db
+      DB_USER_NAME: docker-db
+      DB_PASSWORD: 12345
+      JAVA_TOOL_OPTIONS: -agentlib:jdwp=transport=dt_socket,address=*:5005,server=y,suspend=n
+    labels:
+      kompose.service.type: nodeport
+  db:
+    image: postgres
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_USER: docker-db
+      POSTGRES_PASSWORD: 12345
+    labels:
+      kompose.service.type: nodeport

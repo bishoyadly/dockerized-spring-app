@@ -1,0 +1,5 @@
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/practice-spring
+    username: bishoy
+    password: 12345
